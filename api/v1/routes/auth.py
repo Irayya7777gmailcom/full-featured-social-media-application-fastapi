@@ -32,7 +32,10 @@ async def login(data: UserLogin, db: Session = Depends(get_db)):
     return success_response(
         status_code=status.HTTP_200_OK,
         message="User login successful",
-        data=data,
+        access_token=data["access_token"],
+        token_type="bearer",
+        expiry=data["expiry"],
+        user=data["user"]
     )
 
 
